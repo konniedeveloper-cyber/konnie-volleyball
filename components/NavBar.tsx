@@ -7,15 +7,19 @@ export default function NavBar() {
   return (
     <div className="sticky top-4 z-50">
       <StarBorder
+        as="div"
         color="#e9d5ff"
         trailColor="#a855f7"
         duration={5}
         direction="clockwise"
-        className="block w-full rounded-full"
+        thickness={2}
+        radius={32}
+        backgroundColor="#121217"
+        className="w-full"
       >
-        <nav className="flex w-full items-center justify-between px-2 py-1">
+        <nav className="flex w-full items-center justify-between px-4 py-1">
           <a href="#" className="text-sm tracking-[0.3em]">
-            KONNIE<span className="text-purple-400">&EXEC</span>
+            KONNIE<span className="text-purple-400">.</span>
           </a>
 
           <div className="hidden items-center gap-8 text-[13px] tracking-wider text-zinc-400 md:flex">
