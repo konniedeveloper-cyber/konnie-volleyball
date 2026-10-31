@@ -202,7 +202,7 @@ const StarBorder = <T extends React.ElementType = 'button'>({
   color,
   trailColor,
   duration = 4,
-  thickness = 1,
+  thickness = 2,
   radius = 12,
   trailLength = 0.3,
   stars = 1,

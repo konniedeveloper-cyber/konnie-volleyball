@@ -15,7 +15,7 @@ export default function NavBar() {
       >
         <nav className="flex w-full items-center justify-between px-2 py-1">
           <a href="#" className="text-sm tracking-[0.3em]">
-            KONNIE<span className="text-purple-400">.</span>
+            KONNIE<span className="text-purple-400">&EXEC</span>
           </a>
 
           <div className="hidden items-center gap-8 text-[13px] tracking-wider text-zinc-400 md:flex">
