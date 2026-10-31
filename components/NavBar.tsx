@@ -11,7 +11,7 @@ export default function NavBar() {
         trailColor="#a855f7"
         duration={5}
         direction="clockwise"
-        className="block w-full rounded-2xl"
+        className="block w-full rounded-full"
       >
         <nav className="flex w-full items-center justify-between px-2 py-1">
           <a href="#" className="text-sm tracking-[0.3em]">
