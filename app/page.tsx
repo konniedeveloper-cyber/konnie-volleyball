@@ -40,13 +40,13 @@ const profile = {
   position: "Outside Hitter",
   height: "1.92 m",
   jersey: "#00",
-  team: "Your Team Name",
+  team: "High School Volleyball Team",
 };
 
 // CHANGE THESE to your real contact details
 const contact = {
-  email: "hello@example.com",
-  phone: "+250 700 000 000",
+  email: "dishimwe930@gmail.com",
+  phone: "+250 796610761",
   location: "Rwanda",
 };
 
@@ -162,7 +162,7 @@ export default function Home() {
                 Explore my portfolio <ArrowUpRight size={16} />
               </a>
               <span className="inline-flex items-center gap-2 text-[10px] tracking-widest text-zinc-500">
-                <MapPin size={12} /> RWANDA · VOLLEYBALL
+                <MapPin size={12} /> Rwandan Volleyball Player
               </span>
             </div>
           </div>
