@@ -1,10 +1,15 @@
 import Image from "next/image";
 import {
+  ArrowUp,
   ArrowUpRight,
+  Award,
   Images,
   Medal,
+  Phone,
   Play,
+  Send,
   Sparkles,
+  Star,
   Trophy,
   TrendingUp,
   UserRound,
@@ -20,7 +25,7 @@ import AlbumCarousel from "@/components/AlbumCarousel";
    ============================================================ */
 const photos = {
   logo: "/images/konnie-logo.png",
-  portrait: "/images/konnie-portrait.jpg",
+  portrait: "/images/highlight-2.jpg",
   highlights: [
     { src: "/images/highlight-1.jpg", caption: "Spike · Finals" },
     { src: "/images/highlight-2.jpg", caption: "Serve · Training" },
@@ -31,10 +36,18 @@ const photos = {
 // Album photos live in components/AlbumCarousel.tsx (public/images/album/)
 
 const profile = {
+  name: "ISHIMWE David",
   position: "Outside Hitter",
   height: "1.92 m",
   jersey: "#00",
   team: "Your Team Name",
+};
+
+// CHANGE THESE to your real contact details
+const contact = {
+  email: "hello@example.com",
+  phone: "+250 700 000 000",
+  location: "Rwanda",
 };
 
 const stats = [
@@ -44,10 +57,40 @@ const stats = [
   { label: "Blocks", value: "00" },
 ];
 
+// Each achievement has its own icon, tag and color
 const achievements = [
-  { year: "2026", title: "Add your achievement", detail: "Tournament, league or award." },
-  { year: "2025", title: "Add your achievement", detail: "Tournament, league or award." },
-  { year: "2024", title: "Add your achievement", detail: "Tournament, league or award." },
+  {
+    year: "2026",
+    tag: "TOURNAMENT",
+    title: "Add your achievement",
+    detail: "Champion, finalist or best player of a tournament.",
+    icon: Trophy,
+    tone: "bg-amber-400/10 text-amber-300",
+  },
+  {
+    year: "2025",
+    tag: "LEAGUE",
+    title: "Add your achievement",
+    detail: "League position, promotion or season result.",
+    icon: Medal,
+    tone: "bg-zinc-300/10 text-zinc-200",
+  },
+  {
+    year: "2024",
+    tag: "AWARD",
+    title: "Add your achievement",
+    detail: "Individual award or special recognition.",
+    icon: Award,
+    tone: "bg-purple-400/10 text-purple-300",
+  },
+  {
+    year: "2023",
+    tag: "MILESTONE",
+    title: "Add your achievement",
+    detail: "Selection, first match or personal milestone.",
+    icon: Star,
+    tone: "bg-fuchsia-400/10 text-fuchsia-300",
+  },
 ];
 /* ============================================================ */
 
@@ -180,8 +223,8 @@ export default function Home() {
         <section id="profile" className="mt-20 grid scroll-mt-28 gap-5 md:grid-cols-2">
           <div className="relative min-h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-[#121217]/70 backdrop-blur-sm">
             <Image
-              src="/images/highlight-2.jpg"
-              alt="Konnie portrait"
+              src={photos.portrait}
+              alt={`${profile.name} portrait`}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"
@@ -196,7 +239,7 @@ export default function Home() {
           <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-br from-[#21172d]/90 to-[#111016]/80 p-8 backdrop-blur-sm">
             <div>
               <p className="text-[10px] tracking-widest text-purple-300">ABOUT THE PLAYER</p>
-              <h2 className="mt-4 text-xl md:text-2xl">Meet Konnie.</h2>
+              <h2 className="mt-4 text-xl md:text-2xl">Meet {profile.name}.</h2>
               <p className="mt-4 text-xs leading-7 text-zinc-400">
                 A volleyball player driven by passion, hard work and the desire
                 to become better with every game. This is where the journey
@@ -287,41 +330,140 @@ export default function Home() {
 
         {/* ACHIEVEMENTS */}
         <section id="achievements" className="mt-20 scroll-mt-28">
-          <p className="text-[10px] tracking-[0.3em] text-purple-400">MILESTONES</p>
-          <h2 className="mt-2 text-xl md:text-2xl">Achievements.</h2>
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-[10px] tracking-[0.3em] text-purple-400">MILESTONES</p>
+              <h2 className="mt-2 text-xl md:text-2xl">Achievements.</h2>
+            </div>
+            <span className="text-[10px] text-zinc-500">
+              {String(achievements.length).padStart(2, "0")} HIGHLIGHTS
+            </span>
+          </div>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {achievements.map((a) => (
-              <div
-                key={a.year + a.title}
-                className="rounded-2xl border border-white/10 bg-[#121217]/70 p-6 backdrop-blur-sm transition hover:border-purple-400/50"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] text-zinc-500">{a.year}</span>
-                  <Medal size={20} className="text-purple-400" />
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {achievements.map((a) => {
+              const Icon = a.icon;
+              return (
+                <div
+                  key={a.year + a.tag}
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#121217]/70 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-purple-400/50"
+                >
+                  {/* big faded year in the background */}
+                  <span className="pointer-events-none absolute -bottom-4 -right-2 text-6xl text-white/[0.04] transition group-hover:text-purple-400/10">
+                    {a.year}
+                  </span>
+
+                  <div className="relative flex items-center justify-between">
+                    <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${a.tone}`}>
+                      <Icon size={20} />
+                    </span>
+                    <span className="text-[10px] text-zinc-500">{a.year}</span>
+                  </div>
+
+                  <span className="relative mt-8 inline-block rounded-full border border-white/10 px-3 py-1 text-[9px] tracking-widest text-zinc-400">
+                    {a.tag}
+                  </span>
+                  <h3 className="relative mt-4 text-sm leading-6">{a.title}</h3>
+                  <p className="relative mt-2 text-[11px] leading-6 text-zinc-500">{a.detail}</p>
                 </div>
-                <h3 className="mt-8 text-sm">{a.title}</h3>
-                <p className="mt-2 text-[11px] leading-6 text-zinc-500">{a.detail}</p>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="mt-20 scroll-mt-28">
+          <div className="relative overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-br from-[#2a1a40]/90 via-[#15111e]/90 to-[#101014]/90 p-8 backdrop-blur-sm md:p-12">
+            <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-purple-600/20 blur-[100px]" />
+            <div className="absolute -bottom-24 -right-10 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-[100px]" />
+
+            <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
+              <div>
+                <p className="text-[10px] tracking-[0.3em] text-purple-300">GET IN TOUCH</p>
+                <h2 className="mt-4 text-2xl leading-[1.3] md:text-4xl">
+                  LET&apos;S TALK
+                  <br />
+                  <span className="text-purple-400">VOLLEYBALL.</span>
+                </h2>
+                <p className="mt-6 max-w-md text-xs leading-7 text-zinc-400">
+                  Coach, club or scout? I&apos;m open to trials, collaborations and
+                  new opportunities. Send me a message and let&apos;s talk.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="inline-flex items-center gap-2 rounded-full bg-purple-500 px-6 py-3 text-xs transition hover:bg-purple-400"
+                  >
+                    <Send size={14} /> Email me
+                  </a>
+                  <a
+                    href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-xs transition hover:border-purple-400/60 hover:bg-white/5"
+                  >
+                    <Phone size={14} /> Call
+                  </a>
+                </div>
               </div>
-            ))}
+
+              <div className="grid gap-3">
+                {[
+                  { icon: UserRound, label: "NAME", value: profile.name },
+                  { icon: Mail, label: "EMAIL", value: contact.email },
+                  { icon: Phone, label: "PHONE", value: contact.phone },
+                  { icon: MapPin, label: "LOCATION", value: contact.location },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/20 p-4"
+                    >
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-purple-500/10 text-purple-300">
+                        <Icon size={18} />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-[9px] tracking-widest text-zinc-500">{item.label}</p>
+                        <p className="mt-1 truncate text-xs">{item.value}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </section>
 
         {/* FOOTER */}
-        <footer
-          id="contact"
-          className="mt-20 flex scroll-mt-28 flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-center sm:flex-row"
-        >
-          <p className="text-xs tracking-widest">
-            KONNIE<span className="text-purple-400">.</span>
+        <footer className="mt-16 border-t border-white/10 py-8">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <div className="text-center md:text-left">
+              <p className="text-xs tracking-[0.3em]">
+                KONNIE<span className="text-purple-400">.</span>
+              </p>
+              <p className="mt-2 text-[10px] text-zinc-500">{profile.name} · Volleyball Player</p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] text-zinc-400">
+              <a href="#profile" className="transition hover:text-white">Profile</a>
+              <a href="#highlights" className="transition hover:text-white">Highlights</a>
+              <a href="#album" className="transition hover:text-white">Album</a>
+              <a href="#achievements" className="transition hover:text-white">Achievements</a>
+              <a href="#contact" className="transition hover:text-white">Contact</a>
+            </div>
+
+            <a
+              href="#"
+              aria-label="Back to top"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-purple-300 transition hover:border-purple-400 hover:bg-purple-500 hover:text-white"
+            >
+              <ArrowUp size={16} />
+            </a>
+          </div>
+
+          <p className="mt-8 text-center text-[10px] text-zinc-600">
+            © 2026 {profile.name}. All rights reserved.
           </p>
-          <p className="text-[10px] text-zinc-500">© 2026 Konnie Volleyball Portfolio.</p>
-          <a
-            href="mailto:hello@example.com"
-            className="inline-flex items-center gap-2 text-xs text-purple-400 hover:text-purple-300"
-          >
-            <Mail size={14} /> Contact <ArrowUpRight size={14} />
-          </a>
         </footer>
       </div>
     </main>
