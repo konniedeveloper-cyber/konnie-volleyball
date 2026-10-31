@@ -16,6 +16,7 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import HeroVeil from "@/components/HeroVeil";
 import ElectricLogo from "@/components/ElectricLogo";
 import PageBackground from "@/components/PageBackground";
 import AlbumCarousel from "@/components/AlbumCarousel";
@@ -25,6 +26,7 @@ import AlbumCarousel from "@/components/AlbumCarousel";
    ============================================================ */
 const photos = {
   logo: "/images/konnie-logo.png",
+  hero: "/images/hero-face.png",
   portrait: "/images/highlight-2.jpg",
   highlights: [
     { src: "/images/highlight-1.jpg", caption: "Spike · Finals" },
@@ -44,7 +46,6 @@ const profile = {
   team: "High School Volleyball Team",
 };
 
-// CHANGE THESE to your real contact details
 const contact = {
   email: "dishimwe930@gmail.com",
   phone: "+250 796610761",
@@ -134,8 +135,20 @@ export default function Home() {
 
         {/* HERO */}
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
+          {/* INTRO CARD */}
           <div className="relative flex min-h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#20152f]/90 via-[#15111e]/85 to-[#101014]/80 p-8 backdrop-blur-sm lg:col-span-2">
             <div className="absolute -right-20 -top-28 h-80 w-80 rounded-full bg-purple-600/20 blur-[100px]" />
+
+            {/* FACE (right side, fades into the card) */}
+            <div
+              className="absolute inset-y-0 right-0 hidden w-[42%] md:block"
+              style={{
+                WebkitMaskImage: "linear-gradient(to left, black 55%, transparent 100%)",
+                maskImage: "linear-gradient(to left, black 55%, transparent 100%)",
+              }}
+            >
+              <HeroVeil src={photos.hero} />
+            </div>
 
             <div className="relative">
               <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/20 bg-purple-400/10 px-4 py-2 text-[10px] tracking-widest text-purple-300">
@@ -149,7 +162,7 @@ export default function Home() {
                 THE <span className="text-purple-400">GAME.</span>
               </h1>
 
-              <p className="mt-6 max-w-md text-xs leading-7 text-zinc-400 md:text-sm">
+              <p className="mt-6 max-w-sm text-xs leading-7 text-zinc-400 md:text-sm">
                 Passion, discipline and determination. Every point tells a
                 story. Every match is another opportunity to grow.
               </p>
@@ -177,19 +190,19 @@ export default function Home() {
 
             <div className="mx-auto h-[210px] w-[210px] overflow-hidden rounded-[100px]">
               <ElectricLogo
-              src={photos.logo}
-                color="#ffffff"        // bright core of the lightning lines
-                glowColor="#a855f7"    // color of the halo around them
-                intensity={0.5}        // overall brightness
-                glow={1.6}             // size and strength of the soft halo
-                thickness={1.5}        // width of the light lines
-                strands={4}            // number of lines around the letters (1-6)
-                crackle={1.5}          // how jagged the lightning is
-                flicker={0.6}          // how much the light pulses
-                arcs={1}               // frequency of the big sparks between letters
-                speed={2.5}            // animation speed
-                scale={0.7}            // logo size inside the box (0.1-1)
-               />
+                src={photos.logo}
+                color="#ffffff"
+                glowColor="#a855f7"
+                intensity={0.5}
+                glow={1.6}
+                thickness={1.5}
+                strands={4}
+                crackle={1.5}
+                flicker={0.6}
+                arcs={1}
+                speed={2.5}
+                scale={0.7}
+              />
             </div>
 
             <div className="text-center">
