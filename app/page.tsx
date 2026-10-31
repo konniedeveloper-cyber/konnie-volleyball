@@ -16,6 +16,7 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import NavBar from "@/components/NavBar";
 import HeroVeil from "@/components/HeroVeil";
 import ElectricLogo from "@/components/ElectricLogo";
 import PageBackground from "@/components/PageBackground";
@@ -111,27 +112,8 @@ export default function Home() {
 
       {/* Gaps between cards let the mouse reach the dot field; cards stay interactive */}
       <div className="pointer-events-none relative z-10 mx-auto max-w-7xl px-5 py-6 md:px-10 [&_*]:pointer-events-auto">
-        {/* NAVIGATION */}
-        <nav className="sticky top-4 z-50 flex items-center justify-between rounded-2xl border border-white/10 bg-[#121217]/80 px-6 py-4 backdrop-blur-md">
-          <a href="#" className="text-sm tracking-[0.3em]">
-            KONNIE<span className="text-purple-400">.</span>
-          </a>
-
-          <div className="hidden items-center gap-8 text-[13px] tracking-wider text-zinc-400 md:flex">
-            <a href="#profile" className="transition hover:text-white">Profile</a>
-            <a href="#statistics" className="transition hover:text-white">Statistics</a>
-            <a href="#highlights" className="transition hover:text-white">Highlights</a>
-            <a href="#album" className="transition hover:text-white">Album</a>
-            <a href="#achievements" className="transition hover:text-white">Achievements</a>
-          </div>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-[11px] text-black transition hover:bg-purple-300"
-          >
-            Get in touch <ArrowUpRight size={14} />
-          </a>
-        </nav>
+        {/* NAVIGATION (with star border) */}
+        <NavBar />
 
         {/* HERO */}
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -141,7 +123,7 @@ export default function Home() {
 
             {/* FACE (right side, fades into the card) */}
             <div
-              className="absolute inset-y-0 right-0 hidden w-[42%] md:block"
+              className="absolute inset-y-0 right-0 z-10 hidden w-[42%] md:block"
               style={{
                 WebkitMaskImage: "linear-gradient(to left, black 55%, transparent 100%)",
                 maskImage: "linear-gradient(to left, black 55%, transparent 100%)",
@@ -150,7 +132,7 @@ export default function Home() {
               <HeroVeil src={photos.hero} />
             </div>
 
-            <div className="relative">
+            <div className="relative md:w-[56%]">
               <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/20 bg-purple-400/10 px-4 py-2 text-[10px] tracking-widest text-purple-300">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-purple-400" />
                 VOLLEYBALL PORTFOLIO
@@ -168,7 +150,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="relative mt-10 flex flex-wrap items-center justify-between gap-4">
+            <div className="relative mt-10 flex flex-wrap items-center justify-between gap-4 md:w-[56%]">
               <a
                 href="#profile"
                 className="inline-flex items-center gap-2 rounded-full bg-purple-500 px-6 py-3 text-xs transition hover:bg-purple-400"
