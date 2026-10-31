@@ -37,6 +37,7 @@ const photos = {
 
 const profile = {
   name: "ISHIMWE David",
+  age: "13",
   position: "Outside Hitter",
   height: "1.92 m",
   jersey: "#00",
@@ -174,12 +175,25 @@ export default function Home() {
               <Sparkles size={16} className="text-purple-400" />
             </div>
 
-            <div className="h-[190px] w-full">
-              <ElectricLogo src={photos.logo} />
+            <div className="mx-auto h-[210px] w-[210px] overflow-hidden rounded-[100px]">
+              <ElectricLogo
+              src={photos.logo}
+                color="#ffffff"        // bright core of the lightning lines
+                glowColor="#a855f7"    // color of the halo around them
+                intensity={0.5}        // overall brightness
+                glow={1.6}             // size and strength of the soft halo
+                thickness={1.5}        // width of the light lines
+                strands={4}            // number of lines around the letters (1-6)
+                crackle={1.5}          // how jagged the lightning is
+                flicker={0.6}          // how much the light pulses
+                arcs={1}               // frequency of the big sparks between letters
+                speed={2.5}            // animation speed
+                scale={0.7}            // logo size inside the box (0.1-1)
+               />
             </div>
 
             <div className="text-center">
-              <h2 className="text-sm tracking-[0.3em]">KONNIE</h2>
+              <h2 className="text-sm tracking-[0.3em]">ISHIMWE David</h2>
               <p className="mt-2 text-[9px] tracking-[0.3em] text-zinc-500">VOLLEYBALL PLAYER</p>
             </div>
           </div>
@@ -249,6 +263,7 @@ export default function Home() {
 
             <dl className="mt-8 grid grid-cols-2 gap-4 text-xs">
               {[
+                ["Age", profile.age],
                 ["Position", profile.position],
                 ["Height", profile.height],
                 ["Jersey", profile.jersey],
