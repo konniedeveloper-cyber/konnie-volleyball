@@ -21,6 +21,7 @@ import HeroVeil from "@/components/HeroVeil";
 import ElectricLogo from "@/components/ElectricLogo";
 import PageBackground from "@/components/PageBackground";
 import AlbumCarousel from "@/components/AlbumCarousel";
+import ExploreBackground from "@/components/ExploreBackground";
 
 /* ============================================================
    EDIT HERE: your photos and personal details
@@ -117,19 +118,28 @@ export default function Home() {
 
         {/* HERO */}
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
-          {/* INTRO CARD */}
+          {/* INTRO CARD (electric KONNIE logo on the right) */}
           <div className="relative flex min-h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#20152f]/90 via-[#15111e]/85 to-[#101014]/80 p-8 backdrop-blur-sm lg:col-span-2">
             <div className="absolute -right-20 -top-28 h-80 w-80 rounded-full bg-purple-600/20 blur-[100px]" />
 
-            {/* FACE (right side, fades into the card) */}
-            <div
-              className="absolute inset-y-0 right-0 z-10 hidden w-[42%] md:block"
-              style={{
-                WebkitMaskImage: "linear-gradient(to left, black 55%, transparent 100%)",
-                maskImage: "linear-gradient(to left, black 55%, transparent 100%)",
-              }}
-            >
-              <HeroVeil src={photos.hero} />
+            {/* ELECTRIC LOGO (right side) */}
+            <div className="absolute inset-y-0 right-0 z-10 hidden w-[42%] items-center justify-center md:flex">
+              <div className="h-[300px] w-[300px] max-w-full overflow-hidden rounded-full">
+                <ElectricLogo
+                  src={photos.logo}
+                  color="#ffffff"
+                  glowColor="#a855f7"
+                  intensity={0.5}
+                  glow={1.6}
+                  thickness={1.5}
+                  strands={4}
+                  crackle={1.5}
+                  flicker={0.6}
+                  arcs={1}
+                  speed={2.5}
+                  scale={0.7}
+                />
+              </div>
             </div>
 
             <div className="relative md:w-[56%]">
@@ -163,28 +173,24 @@ export default function Home() {
             </div>
           </div>
 
-          {/* LOGO CARD */}
+          {/* PLAYER IDENTITY CARD (dithered face) */}
           <div className="flex min-h-[380px] flex-col items-center justify-between overflow-hidden rounded-3xl border border-purple-500/20 bg-[#111016]/80 p-6 backdrop-blur-sm">
             <div className="flex w-full items-center justify-between">
               <span className="text-[10px] tracking-[0.25em] text-zinc-400">PLAYER IDENTITY</span>
               <Sparkles size={16} className="text-purple-400" />
             </div>
 
-            <div className="mx-auto h-[210px] w-[210px] overflow-hidden rounded-[100px]">
-              <ElectricLogo
-                src={photos.logo}
-                color="#ffffff"
-                glowColor="#a855f7"
-                intensity={0.5}
-                glow={1.6}
-                thickness={1.5}
-                strands={4}
-                crackle={1.5}
-                flicker={0.6}
-                arcs={1}
-                speed={2.5}
-                scale={0.7}
-              />
+            {/* FACE */}
+            <div
+              className="relative my-3 min-h-[240px] w-full flex-1"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, transparent 0%, black 12%, black 85%, transparent 100%)",
+                maskImage:
+                  "linear-gradient(to bottom, transparent 0%, black 12%, black 85%, transparent 100%)",
+              }}
+            >
+              <HeroVeil src={photos.hero} />
             </div>
 
             <div className="text-center">
@@ -194,39 +200,50 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CATEGORY CARDS */}
-        <div className="mt-14 flex items-end justify-between">
-          <div>
-            <p className="text-[10px] tracking-[0.3em] text-purple-400">EXPLORE</p>
-            <h2 className="mt-2 text-xl md:text-2xl">Inside my world.</h2>
-          </div>
-          <span className="text-[10px] text-zinc-500">05 CATEGORIES</span>
-        </div>
+        {/* EXPLORE (big card with liquid chrome background) */}
+        <section className="relative mt-14 overflow-hidden rounded-3xl border border-white/10 bg-[#09090c]">
+          {/* animated chrome background */}
+          <ExploreBackground />
 
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {playerCards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <a
-                key={card.number}
-                href={card.href}
-                className="group rounded-2xl border border-white/10 bg-[#121217]/70 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-purple-400/50 hover:bg-[#191421]/90"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] text-zinc-500">{card.number} / 05</span>
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 transition group-hover:bg-purple-500 group-hover:text-white">
-                    <Icon size={18} />
-                  </span>
-                </div>
-                <h3 className="mt-12 text-sm">{card.title}</h3>
-                <p className="mt-2 text-[11px] leading-6 text-zinc-500">{card.description}</p>
-                <div className="mt-6 inline-flex items-center gap-1 text-[11px] text-purple-400">
-                  Explore <ArrowUpRight size={14} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </div>
-              </a>
-            );
-          })}
-        </div>
+          {/* dark tint so the text and cards stay readable */}
+          <div className="!pointer-events-none absolute inset-0 bg-[#09090c]/60" />
+
+          {/* content */}
+          <div className="!pointer-events-none relative p-6 md:p-10">
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="text-[10px] tracking-[0.3em] text-purple-300">EXPLORE</p>
+                <h2 className="mt-2 text-xl md:text-2xl">Inside my world.</h2>
+              </div>
+              <span className="text-[10px] text-zinc-400">05 CATEGORIES</span>
+            </div>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {playerCards.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <a
+                    key={card.number}
+                    href={card.href}
+                    className="group rounded-2xl border border-white/10 bg-[#121217]/70 p-6 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-purple-400/50 hover:bg-[#191421]/90"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] text-zinc-500">{card.number} / 05</span>
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 transition group-hover:bg-purple-500 group-hover:text-white">
+                        <Icon size={18} />
+                      </span>
+                    </div>
+                    <h3 className="mt-12 text-sm">{card.title}</h3>
+                    <p className="mt-2 text-[11px] leading-6 text-zinc-500">{card.description}</p>
+                    <div className="mt-6 inline-flex items-center gap-1 text-[11px] text-purple-400">
+                      Explore <ArrowUpRight size={14} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
         {/* PROFILE */}
         <section id="profile" className="mt-20 grid scroll-mt-28 gap-5 md:grid-cols-2">
