@@ -22,6 +22,7 @@ import ElectricLogo from "@/components/ElectricLogo";
 import PageBackground from "@/components/PageBackground";
 import AlbumCarousel from "@/components/AlbumCarousel";
 import ExploreBackground from "@/components/ExploreBackground";
+import AchievementsBackground from "@/components/AchievementsBackground";
 
 /* ============================================================
    EDIT HERE: your photos and personal details
@@ -355,46 +356,55 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ACHIEVEMENTS */}
-        <section id="achievements" className="mt-20 scroll-mt-28">
-          <div className="flex items-end justify-between">
-            <div>
-              <p className="text-[10px] tracking-[0.3em] text-purple-400">MILESTONES</p>
-              <h2 className="mt-2 text-xl md:text-2xl">Achievements.</h2>
+        {/* ACHIEVEMENTS (big card with shape grid background) */}
+        <section
+          id="achievements"
+          className="relative mt-20 scroll-mt-28 overflow-hidden rounded-3xl border border-white/10 bg-[#09090c]"
+        >
+          {/* animated grid background */}
+          <AchievementsBackground />
+
+          {/* content */}
+          <div className="!pointer-events-none relative p-6 md:p-10">
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="text-[10px] tracking-[0.3em] text-purple-400">MILESTONES</p>
+                <h2 className="mt-2 text-xl md:text-2xl">Achievements.</h2>
+              </div>
+              <span className="text-[10px] text-zinc-500">
+                {String(achievements.length).padStart(2, "0")} HIGHLIGHTS
+              </span>
             </div>
-            <span className="text-[10px] text-zinc-500">
-              {String(achievements.length).padStart(2, "0")} HIGHLIGHTS
-            </span>
-          </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {achievements.map((a) => {
-              const Icon = a.icon;
-              return (
-                <div
-                  key={a.year + a.tag}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#121217]/70 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-purple-400/50"
-                >
-                  {/* big faded year in the background */}
-                  <span className="pointer-events-none absolute -bottom-4 -right-2 text-6xl text-white/[0.04] transition group-hover:text-purple-400/10">
-                    {a.year}
-                  </span>
-
-                  <div className="relative flex items-center justify-between">
-                    <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${a.tone}`}>
-                      <Icon size={20} />
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {achievements.map((a) => {
+                const Icon = a.icon;
+                return (
+                  <div
+                    key={a.year + a.tag}
+                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#121217]/75 p-6 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-purple-400/50"
+                  >
+                    {/* big faded year in the background */}
+                    <span className="pointer-events-none absolute -bottom-4 -right-2 text-6xl text-white/[0.04] transition group-hover:text-purple-400/10">
+                      {a.year}
                     </span>
-                    <span className="text-[10px] text-zinc-500">{a.year}</span>
-                  </div>
 
-                  <span className="relative mt-8 inline-block rounded-full border border-white/10 px-3 py-1 text-[9px] tracking-widest text-zinc-400">
-                    {a.tag}
-                  </span>
-                  <h3 className="relative mt-4 text-sm leading-6">{a.title}</h3>
-                  <p className="relative mt-2 text-[11px] leading-6 text-zinc-500">{a.detail}</p>
-                </div>
-              );
-            })}
+                    <div className="relative flex items-center justify-between">
+                      <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${a.tone}`}>
+                        <Icon size={20} />
+                      </span>
+                      <span className="text-[10px] text-zinc-500">{a.year}</span>
+                    </div>
+
+                    <span className="relative mt-8 inline-block rounded-full border border-white/10 px-3 py-1 text-[9px] tracking-widest text-zinc-400">
+                      {a.tag}
+                    </span>
+                    <h3 className="relative mt-4 text-sm leading-6">{a.title}</h3>
+                    <p className="relative mt-2 text-[11px] leading-6 text-zinc-500">{a.detail}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
 
