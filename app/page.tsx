@@ -26,6 +26,7 @@ import AchievementsBackground from "@/components/AchievementsBackground";
 import AlbumBackground from "@/components/AlbumBackground";
 import HighlightsGrid from "@/components/HighlightsGrid";
 import HighlightsBackground from "@/components/HighlightsBackground";
+import ContactCrosshair from "@/components/ContactCrosshair";
 
 /* ============================================================
    EDIT HERE: your photos and personal details
@@ -423,9 +424,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CONTACT */}
+        {/* CONTACT (card with crosshair cursor) */}
         <section id="contact" className="mt-20 scroll-mt-28">
-          <div className="relative overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-br from-[#2a1a40]/90 via-[#15111e]/90 to-[#101014]/90 p-8 backdrop-blur-sm md:p-12">
+          <ContactCrosshair className="relative overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-br from-[#2a1a40]/90 via-[#15111e]/90 to-[#101014]/90 p-8 backdrop-blur-sm md:p-12">
             <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-purple-600/20 blur-[100px]" />
             <div className="absolute -bottom-24 -right-10 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-[100px]" />
 
@@ -483,7 +484,7 @@ export default function Home() {
                 })}
               </div>
             </div>
-          </div>
+          </ContactCrosshair>
         </section>
 
         {/* FOOTER */}
