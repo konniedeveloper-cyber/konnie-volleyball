@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import CircularCarousel from "@/components/CircularCarousel";
 
 /* ============================================================
@@ -15,16 +16,33 @@ const items = [
   { src: "/images/album/album-7.jpg", alt: "Match day", title: "Match day" },
   { src: "/images/album/album-8.jpg", alt: "Match day", title: "Match day" },
 ];
+
+// EDIT HERE: sizes in pixels
+const SIZE = {
+  desktop: { cardWidth: 440, height: 300 },
+  mobile: { cardWidth: 260, height: 230 },
+};
 /* ============================================================ */
 
 export default function AlbumCarousel() {
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const update = () => setIsDesktop(window.innerWidth >= 768);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const size = isDesktop ? SIZE.desktop : SIZE.mobile;
+
   return (
-    <div className="relative h-[260px] w-full md:h-[260px]">
+    <div className="relative w-full" style={{ height: size.height }}>
       <CircularCarousel
         items={items}
         preset="cylinder"
         intro="rise"
-        cardWidth={320}
+        cardWidth={size.cardWidth}
       />
     </div>
   );

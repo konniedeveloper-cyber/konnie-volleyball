@@ -1,7 +1,17 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { ArrowUpRight } from "lucide-react";
 import StarBorder from "@/components/StarBorder";
+import GooeyNav from "@/components/GooeyNav";
+
+const items = [
+  { label: "Profile", href: "#profile" },
+  { label: "Statistics", href: "#statistics" },
+  { label: "Highlights", href: "#highlights" },
+  { label: "Album", href: "#album" },
+  { label: "Achievements", href: "#achievements" },
+];
 
 export default function NavBar() {
   return (
@@ -19,15 +29,24 @@ export default function NavBar() {
       >
         <nav className="flex w-full items-center justify-between px-4 py-1">
           <a href="#" className="text-sm tracking-[0.3em]">
-            KONNIE<span className="text-purple-400">&exec</span>
+            KONNIE<span className="text-purple-400">.</span>
           </a>
 
-          <div className="hidden items-center gap-8 text-[13px] tracking-wider text-zinc-400 md:flex">
-            <a href="#profile" className="transition hover:text-white">Profile</a>
-            <a href="#statistics" className="transition hover:text-white">Statistics</a>
-            <a href="#highlights" className="transition hover:text-white">Highlights</a>
-            <a href="#album" className="transition hover:text-white">Album</a>
-            <a href="#achievements" className="transition hover:text-white">Achievements</a>
+          <div className="hidden lg:block">
+            <GooeyNav
+              items={items}
+              frame={false}
+              size="sm"
+              color="#a855f7"
+              activeTextColor="#ffffff"
+              style={
+                {
+                  "--gn-font": "11px",
+                  "--gn-x": "12px",
+                  "--gn-y": "8px",
+                } as CSSProperties
+              }
+            />
           </div>
 
           <a

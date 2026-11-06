@@ -963,7 +963,7 @@ const LetterGlitch = ({
     resize();
     wakeRef.current = wake;
 
-    return () => {
+        return () => {
       alive = false;
       cancelAnimationFrame(raf);
       wakeRef.current = null;
@@ -980,7 +980,6 @@ const LetterGlitch = ({
       gl.deleteTexture(stateTexture);
       gl.deleteVertexArray(vao);
       gl.deleteProgram(program.program);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, []);
 

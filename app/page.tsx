@@ -23,6 +23,9 @@ import PageBackground from "@/components/PageBackground";
 import AlbumCarousel from "@/components/AlbumCarousel";
 import ExploreBackground from "@/components/ExploreBackground";
 import AchievementsBackground from "@/components/AchievementsBackground";
+import AlbumBackground from "@/components/AlbumBackground";
+import HighlightsGrid from "@/components/HighlightsGrid";
+import HighlightsBackground from "@/components/HighlightsBackground";
 
 /* ============================================================
    EDIT HERE: your photos and personal details
@@ -31,11 +34,12 @@ const photos = {
   logo: "/images/konnie-logo.png",
   hero: "/images/hero-face.png",
   portrait: "/images/highlight-2.jpg",
+  // title / subtitle show under each photo, accent is the glow color
   highlights: [
-    { src: "/images/highlight-1.jpg", caption: "Spike · Finals" },
-    { src: "/images/highlight-2.jpg", caption: "Serve · Training" },
-    { src: "/images/highlight-3.jpg", caption: "Block · League match" },
-    { src: "/images/highlight-4.jpg", caption: "Team celebration" },
+    { src: "/images/highlight-1.jpg", title: "Spike", subtitle: "Finals", accent: "#a855f7" },
+    { src: "/images/highlight-2.jpg", title: "Serve", subtitle: "Training", accent: "#f59e0b" },
+    { src: "/images/highlight-3.jpg", title: "Block", subtitle: "League match", accent: "#22d3ee" },
+    { src: "/images/highlight-4.jpg", title: "Team", subtitle: "Celebration", accent: "#f472b6" },
   ],
 };
 // Album photos live in components/AlbumCarousel.tsx (public/images/album/)
@@ -313,46 +317,57 @@ export default function Home() {
           </div>
         </section>
 
-        {/* HIGHLIGHTS GALLERY */}
-        <section id="highlights" className="mt-20 scroll-mt-28">
-          <p className="text-[10px] tracking-[0.3em] text-purple-400">ON THE COURT</p>
-          <h2 className="mt-2 text-xl md:text-2xl">Highlights.</h2>
+        {/* HIGHLIGHTS (big card with ghost fibers background) */}
+        <section
+          id="highlights"
+          className="relative mt-20 scroll-mt-28 overflow-hidden rounded-3xl border border-white/10 bg-[#09090c]"
+        >
+          {/* animated fibers background */}
+          <HighlightsBackground />
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {photos.highlights.map((p) => (
-              <figure
-                key={p.src}
-                className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-[#121217]/70"
-              >
-                <Image
-                  src={p.src}
-                  alt={p.caption}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <figcaption className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] tracking-wider">
-                  {p.caption}
-                  <Play size={14} className="text-purple-400" />
-                </figcaption>
-              </figure>
-            ))}
+          {/* light dark tint so the photos and text stay readable */}
+          <div className="!pointer-events-none absolute inset-0 bg-[#09090c]/35" />
+
+          {/* content */}
+          <div className="relative p-6 md:p-10">
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="text-[10px] tracking-[0.3em] text-purple-300">ON THE COURT</p>
+                <h2 className="mt-2 text-xl md:text-2xl">Highlights.</h2>
+              </div>
+              <span className="text-[10px] text-zinc-400">MOVE YOUR CURSOR</span>
+            </div>
+
+            <div className="mt-6">
+              <HighlightsGrid highlights={photos.highlights} />
+            </div>
           </div>
         </section>
 
-        {/* ALBUM */}
-        <section id="album" className="mt-20 scroll-mt-28">
-          <div className="flex items-end justify-between">
-            <div>
-              <p className="text-[10px] tracking-[0.3em] text-purple-400">THE COLLECTION</p>
-              <h2 className="mt-2 text-xl md:text-2xl">Album.</h2>
-            </div>
-            <span className="text-[10px] text-zinc-500">DRAG TO ROTATE</span>
-          </div>
+        {/* ALBUM (big card with letter glitch background) */}
+        <section
+          id="album"
+          className="relative mt-20 scroll-mt-28 overflow-hidden rounded-3xl border border-white/10 bg-[#09090c]"
+        >
+          {/* animated letters background */}
+          <AlbumBackground />
 
-          <div className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-[#121217]/50 py-6 backdrop-blur-sm">
-            <AlbumCarousel />
+          {/* dark tint so the carousel and text stay readable */}
+          <div className="!pointer-events-none absolute inset-0 bg-[#09090c]/55" />
+
+          {/* content */}
+          <div className="relative p-6 md:p-10">
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="text-[10px] tracking-[0.3em] text-purple-300">THE COLLECTION</p>
+                <h2 className="mt-2 text-xl md:text-2xl">Album.</h2>
+              </div>
+              <span className="text-[10px] text-zinc-400">DRAG TO ROTATE</span>
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-2xl py-2">
+              <AlbumCarousel />
+            </div>
           </div>
         </section>
 

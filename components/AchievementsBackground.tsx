@@ -7,12 +7,13 @@ export default function AchievementsBackground() {
     <div className="absolute inset-0">
       <ShapeGrid
         shape="square"
-        direction="diagonal"
+        direction="down"
         lineColor="#2a2734"
         hoverColor="#a855f7"
         hoverFillColor="#a855f7"
         fillOpacity={0.15}
-        cellSize={40}
+        cellSize={30}
+        fade={0.2}
       />
     </div>
   );
