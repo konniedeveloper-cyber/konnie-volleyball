@@ -29,7 +29,7 @@ export default function NavBar() {
       >
         <nav className="flex w-full items-center justify-between px-4 py-1">
           <a href="#" className="text-sm tracking-[0.3em]">
-            KONNIE<span className="text-purple-400">.</span>
+            KONNIE<span className="text-purple-400">&exec</span>
           </a>
 
           <div className="hidden lg:block">

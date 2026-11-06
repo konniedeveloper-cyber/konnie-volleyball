@@ -122,7 +122,7 @@ export default function Home() {
         <NavBar />
 
         {/* HERO */}
-        <div className="mt-8 grid gap-5 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 lg:h-[420px] lg:grid-cols-3">
           {/* INTRO CARD (electric KONNIE logo on the right) */}
           <div className="relative flex min-h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#20152f]/90 via-[#15111e]/85 to-[#101014]/80 p-8 backdrop-blur-sm lg:col-span-2">
             <div className="absolute -right-20 -top-28 h-80 w-80 rounded-full bg-purple-600/20 blur-[100px]" />
@@ -135,14 +135,14 @@ export default function Home() {
                   color="#ffffff"
                   glowColor="#a855f7"
                   intensity={0.5}
-                  glow={1.6}
-                  thickness={1.5}
-                  strands={4}
-                  crackle={1.5}
-                  flicker={0.6}
-                  arcs={1}
-                  speed={2.5}
-                  scale={0.7}
+                  glow={0.5}
+                  thickness={3}
+                  strands={0.5}
+                  crackle={0.5}
+                  flicker={0.1}
+                  arcs={0.5}
+                  speed={1}
+                  scale={0.9}
                 />
               </div>
             </div>

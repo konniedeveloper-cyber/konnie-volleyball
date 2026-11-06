@@ -37,7 +37,7 @@ export default function HighlightsGrid({ highlights }: { highlights: Highlight[]
 
   return (
     <div className="relative w-full" style={{ minHeight: rows * ROW_HEIGHT }}>
-      <ChromaGrid items={items} columns={columns} rows={rows} />
+      <ChromaGrid items={items} columns={columns} />
     </div>
   );
 }
